@@ -1,6 +1,6 @@
 var http = require("http");
-var fs = require("fs");
 var dispatcher = require("httpdispatcher");
+var library = require("./library.js").Tools;
 var port = 8800;
 var handleRequest = function (request, response){
   try {
@@ -14,33 +14,10 @@ var handleRequest = function (request, response){
 };
 var server = http.createServer(handleRequest);
 
-var generateCurrentNoteNumber = function(notesCollection){
-  var lastNoteNumber = 0;
-  if(Object.keys(notesCollection).length > 0){
-      lastNoteNumber = parseInt(Object.keys(notesCollection).slice(-1)[0]);
-  }
-  return  lastNoteNumber + 1;
-};
-
-var saveTheNote = function(note){
-  var notesCollection = getAllNotes();
-  var currentNoteNumber = generateCurrentNoteNumber(notesCollection)
-
-  notesCollection[currentNoteNumber] = note;
-  fs.writeFile('./data.txt', JSON.stringify(notesCollection), function (err) {
-    if (err) throw err;
-    console.log('It\'s saved!');
-  });
-  return true;
-};
-
-var getAllNotes = function(){
-  return JSON.parse(fs.readFileSync('./data.txt', 'utf8'));
-};
 
 dispatcher.onPost("/saveNote",function(request,response){
-  var notToSave = JSON.parse(request.body).note;
-  if(saveTheNote(notToSave)){
+  var noteToSave = JSON.parse(request.body).note;
+  if(library.saveTheNote(noteToSave)){
     response.writeHead(200,{'Content-Type':'text/plain'});
     response.end("true");
   }
@@ -49,7 +26,6 @@ dispatcher.onPost("/saveNote",function(request,response){
 });
 
 dispatcher.onGet("/getNotes", function(request,response){
-
   response.writeHead(200,{'Content-type':'text/plain'});
   response.end("ghe tuzya notes");
 })
