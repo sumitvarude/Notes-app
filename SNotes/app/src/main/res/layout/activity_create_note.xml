@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.sumitvar.snotes.CreateNoteActivity"
+    android:orientation="vertical"
+    android:id="@+id/id">
+
+    <TextView android:text="Welcome to create note" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/note_title" android:hint="Title"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/note_content" android:hint="Content"
+        android:textAlignment="textStart"
+        android:elegantTextHeight="true"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:onClick="saveNote"
+        />
+</LinearLayout>
