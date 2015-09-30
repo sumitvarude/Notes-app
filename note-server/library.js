@@ -9,7 +9,7 @@ var generateCurrentNoteNumber = function(notesCollection){
 };
 
 Tools.saveTheNote = function(note){
-  var notesCollection = getAllNotes();
+  var notesCollection = Tools.getAllNotes();
   var currentNoteNumber = generateCurrentNoteNumber(notesCollection)
 
   notesCollection[currentNoteNumber] = note;
@@ -20,7 +20,7 @@ Tools.saveTheNote = function(note){
   return true;
 };
 
-var getAllNotes = function(){
+Tools.getAllNotes = function(){
   return JSON.parse(fs.readFileSync('./data.txt', 'utf8'));
 };
 

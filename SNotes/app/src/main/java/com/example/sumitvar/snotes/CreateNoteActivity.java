@@ -3,10 +3,14 @@ package com.example.sumitvar.snotes;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+
+import com.example.sumitvar.snotes.helper.Note;
+import com.example.sumitvar.snotes.helper.NoteSaver;
 
 public class CreateNoteActivity extends AppCompatActivity {
     private EditText titleText;
@@ -45,6 +49,10 @@ public class CreateNoteActivity extends AppCompatActivity {
     public void saveNote(View view) {
         String title = String.valueOf(titleText.getText());
         String content = String.valueOf(contentText.getText());
+        Note note = new Note(title,content);
+        NoteSaver noteSaver = new NoteSaver("http://10.0.2.2:8800/saveNote", note, this);
+        noteSaver.execute();
+
         Intent mainIntent = new Intent(CreateNoteActivity.this, MainActivity.class);
         mainIntent.putExtra("title",title);
         mainIntent.putExtra("content",content);

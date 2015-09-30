@@ -13,7 +13,8 @@ dispatcher.onPost("/saveNote",function(request,response){
 
 dispatcher.onGet("/getNotes", function(request,response){
   response.writeHead(200,{'Content-type':'text/plain'});
-  response.end("ghe tuzya notes");
+  var notesCollection = library.getAllNotes();
+  response.end(JSON.stringify(notesCollection));
 });
 
 module.exports.dispatcher = dispatcher;

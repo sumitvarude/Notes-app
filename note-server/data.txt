@@ -1,1 +1,1 @@
-{}
+{"1":{"title":"Note","content":"This is a sample note"}}
