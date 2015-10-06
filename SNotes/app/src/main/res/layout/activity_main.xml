@@ -11,6 +11,11 @@
 
     <TextView android:text="Welcome to SNotes" android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/notes_list">
+    </ListView>
     <TextView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/titlePanel"></TextView>

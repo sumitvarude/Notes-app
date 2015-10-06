@@ -1,14 +1,8 @@
 package com.example.sumitvar.snotes.helper;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.sumitvar.snotes.MainActivity;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 

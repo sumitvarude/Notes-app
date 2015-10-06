@@ -23,8 +23,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreateNoteActivity"
-            android:label="@string/title_activity_create_note" >
+            android:name=".CreateNoteActivity">
+        </activity>
+        <activity android:name=".NoteActivity">
         </activity>
     </application>
 </manifest>
