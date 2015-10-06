@@ -17,4 +17,16 @@ dispatcher.onGet("/getNotes", function(request,response){
   response.end(JSON.stringify(notesCollection));
 });
 
+dispatcher.onPost("/deleteNote", function(request, response){
+  var noteIdToDelete = request.body;
+  var notes = Tools.getAllNotes();
+  if(Tools.hasNote(noteIdToDelete, notes)){
+    Tools.deleteNote(noteIdToDelete,notes);
+    response.writeHead(200,{'Content-type':'text/plain'});
+    response.end("true");
+  }
+  response.writeHead(500,{'Content-type':'text/plain'});
+  response.end("false");
+})
+
 module.exports.dispatcher = dispatcher;
